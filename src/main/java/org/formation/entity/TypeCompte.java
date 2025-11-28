@@ -7,8 +7,6 @@ import lombok.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "type_compte")
 public class TypeCompte {
@@ -20,4 +18,8 @@ public class TypeCompte {
     @NotBlank(message = "Le nom du type de compte est obligatoire.")
     @Column(name = "nom", nullable = false, length = 100)
     private String nom;
+
+    public TypeCompte(String nom) {
+        this.nom = nom;
+    }
 }

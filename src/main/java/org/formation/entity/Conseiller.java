@@ -10,8 +10,6 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "conseiller")
 public class Conseiller {
@@ -26,4 +24,8 @@ public class Conseiller {
 
     @OneToMany(mappedBy = "conseiller", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Client> clients = new HashSet<>();
+
+    public Conseiller(String nom) {
+        this.nom = nom;
+    }
 }
