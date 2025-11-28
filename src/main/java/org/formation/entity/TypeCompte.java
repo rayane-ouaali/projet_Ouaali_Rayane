@@ -6,9 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @Entity
 @Data
 @NoArgsConstructor
@@ -20,9 +17,6 @@ public class TypeCompte {
 
     @NotBlank(message = "Le nom du type de compte est obligatoire.")
     private String nom;
-
-    @OneToMany(mappedBy = "typeCompte", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Compte> comptes = new HashSet<>();
 
     public TypeCompte(String nom) {
         this.nom = nom;
