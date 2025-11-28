@@ -9,6 +9,8 @@ import org.formation.service.ClientService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("clients")
 @RequiredArgsConstructor
@@ -19,6 +21,11 @@ public class ClientController {
     @PostMapping
     ClientDto save(@RequestBody @Valid ClientCreateDto clientCreateDto) {
         return clientService.save(clientCreateDto);
+    }
+
+    @GetMapping
+    List<ClientDto> getAllClients() {
+        return clientService.findAll();
     }
 
     @GetMapping("{id}")

@@ -11,6 +11,7 @@ import org.formation.mapper.ClientMapper;
 import org.formation.repository.ClientRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -32,6 +33,13 @@ public class ClientServiceImpl implements ClientService {
         return clientRepository.findById(id).map(clientMapper::toDto);
     }
 
+    @Override
+    public List<ClientDto> findAll() {
+        return clientRepository.findAll().stream()
+                .map(clientMapper::toDto)
+                .toList();
+    }
+
     @Transactional
     @Override
     public Optional<ClientDto> update(Long id, ClientUpdateDto dto) {
@@ -45,9 +53,12 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public void delete(Long id) {
         clientRepository.findById(id).ifPresent(client -> {
-            for (Compte c : client.getComptes()) {
-                c.setActif(false);
-                c.setClient(null);
+            // Désactiver et détacher les comptes associés
+            if (client.getComptes() != null) {
+                for (Compte c : client.getComptes()) {
+                    c.setActif(false);
+                    c.setClient(null);
+                }
             }
 
             clientRepository.delete(client);

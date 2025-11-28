@@ -1,11 +1,12 @@
 package org.formation.service;
 
-import org.formation.entity.Conseiller;
-import org.formation.entity.Client;
+import org.formation.dto.conseiller.ConseillerDto;
+
+import java.util.List;
 import java.util.Optional;
 
 public interface ConseillerService {
-    Optional<Conseiller> findById(Long id);
-    Conseiller save(Conseiller conseiller);
+    List<ConseillerDto> findAll();
+    Optional<ConseillerDto> findById(Long id);
     void ajouterClientAConseiller(Long conseillerID, Long clientId);
 }

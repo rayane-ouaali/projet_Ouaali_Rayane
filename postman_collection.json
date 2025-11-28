@@ -1,0 +1,276 @@
+{
+  "info": {
+    "name": "SimpleCash v4",
+    "description": "Collection complète des endpoints pour l'API de gestion bancaire",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Conseiller",
+      "item": [
+        {
+          "name": "Lister tous les Conseillers",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/conseillers",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["conseillers"]
+            }
+          }
+        },
+        {
+          "name": "Récupérer un Conseiller",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/conseillers/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["conseillers", "1"]
+            }
+          }
+        },
+        {
+          "name": "Ajouter un Client à un Conseiller",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "http://localhost:8080/conseillers/1/clients/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["conseillers", "1", "clients", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Client",
+      "item": [
+        {
+          "name": "Créer un Client",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"Ouaali\",\n  \"prenom\": \"Rayane\",\n  \"adresse\": \"123 Rue de Paris\",\n  \"codePostal\": \"75001\",\n  \"ville\": \"Paris\",\n  \"telephone\": \"0123456789\",\n  \"idConseiller\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/clients",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["clients"]
+            }
+          }
+        },
+        {
+          "name": "Récupérer un Client",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/clients/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["clients", "1"]
+            }
+          }
+        },
+        {
+          "name": "Lister tous les Clients",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/clients",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["clients"]
+            }
+          }
+        },
+        {
+          "name": "Mettre à jour un Client (PATCH complet)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"Ouaali\",\n  \"prenom\": \"Rayane\",\n  \"adresse\": \"456 Avenue de Lyon\",\n  \"codePostal\": \"75002\",\n  \"ville\": \"Paris\",\n  \"telephone\": \"0987654321\",\n  \"idConseiller\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/clients/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["clients", "1"]
+            }
+          }
+        },
+        {
+          "name": "Mettre à jour un Client (PATCH partiel - nom seulement)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"Nouveau Nom\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/clients/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["clients", "1"]
+            }
+          }
+        },
+        {
+          "name": "Supprimer un Client",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://localhost:8080/clients/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["clients", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Compte",
+      "item": [
+        {
+          "name": "Lister tous les Comptes",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/comptes",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["comptes"]
+            }
+          }
+        },
+        {
+          "name": "Récupérer un Compte",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/comptes/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["comptes", "1"]
+            }
+          }
+        },
+        {
+          "name": "Effectuer une Transaction - Dépôt",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "http://localhost:8080/comptes/1/transaction?montant=500",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["comptes", "1", "transaction"],
+              "query": [
+                {
+                  "key": "montant",
+                  "value": "500"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Effectuer une Transaction - Retrait",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "http://localhost:8080/comptes/1/transaction?montant=-200",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["comptes", "1", "transaction"],
+              "query": [
+                {
+                  "key": "montant",
+                  "value": "-200"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tests - Erreurs de Validation",
+      "item": [
+        {
+          "name": "Créer Client sans nom (erreur 400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"\",\n  \"prenom\": \"Rayane\",\n  \"adresse\": \"123 Rue\",\n  \"codePostal\": \"75001\",\n  \"ville\": \"Paris\",\n  \"telephone\": \"0123456789\",\n  \"idConseiller\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/clients",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["clients"]
+            }
+          }
+        },
+        {
+          "name": "Récupérer Client inexistant (erreur 404)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/clients/999",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["clients", "999"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
