@@ -17,7 +17,7 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
     @Column(name = "nom", nullable = false)
     private String nom;
@@ -36,6 +36,10 @@ public class Client {
 
     @Column(name = "telephone", length = 15)
     private String telephone;
+
+    @ManyToOne
+    @JoinColumn(name = "idConseiller")
+    private Conseiller conseiller;
 
     @Setter
     @Getter
