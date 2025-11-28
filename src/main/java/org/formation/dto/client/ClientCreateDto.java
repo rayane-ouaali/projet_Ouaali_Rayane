@@ -2,7 +2,7 @@ package org.formation.dto.client;
 
 import jakarta.validation.constraints.NotBlank;
 
-public record ClientUpdateDto(
+public record ClientCreateDto(
         @NotBlank(message = "Le nom du client est obligatoire.")
         String nom,
         @NotBlank(message = "Le prénom du client est obligatoire.")
